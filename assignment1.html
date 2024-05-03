@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Rendering</title>
+</head>
+<style>
+    img{
+        width: 500px;
+        height: 500px;
+    }
+</style>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Your ItemList component code will go here
+
+    // Capture the root element from the DOM
+    let rootElement = document.getElementById('root')
+
+    // Create a Gallery component accepting props
+    let Gallery = (props) =>{
+        return ( 
+            //  Creating a grid layout
+            <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"10px"}}>
+                {/* Passing children through props */}
+                {props.children}
+            </div>
+        )
+    }
+
+    let App = () =>{
+        return (
+            <div>
+                <Gallery>
+                    {/* Adding images */}
+                    <img src="https://m.media-amazon.com/images/I/31DtT2LiLdL._SX300_SY300_QL70_FMwebp_.jpg" alt=""/>
+                    <img src="https://m.media-amazon.com/images/I/61f4dTush1L._SL1500_.jpg" alt=""/>
+                    <img src="https://m.media-amazon.com/images/I/71mTfSKhhTL._SL1500_.jpg" alt=""/>
+                    <img src="https://m.media-amazon.com/images/I/31sw8R9-hjL._SX300_SY300_QL70_FMwebp_.jpg" alt=""/>
+                    <img src="https://m.media-amazon.com/images/I/71fdSFX9T7L._SL1500_.jpg" alt=""/>
+                    <img src="https://m.media-amazon.com/images/I/41yiwGl1JPL._SX300_SY300_QL70_FMwebp_.jpg" alt=""/>
+                </Gallery>
+            </div>
+        )
+    }
+ 
+    // Render the App component
+    ReactDOM.createRoot(rootElement).render(<App />)
+  </script>
+</body>
+</html>
